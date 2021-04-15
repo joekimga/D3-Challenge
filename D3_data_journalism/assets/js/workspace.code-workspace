@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\.."
+		},
+		{
+			"path": "..\\..\\..\\..\\personal_folder\\16-D3"
+		},
+		{
+			"path": "..\\..\\..\\..\\personal_folder\\17-Mapping-Web"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "17-Mapping-Web"
+	}
+}

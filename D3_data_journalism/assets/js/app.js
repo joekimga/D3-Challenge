@@ -22,7 +22,7 @@ var svg = d3.select("#scatter")
     .attr("height", svgHeight);
         
 var chartGroup = svg.append("g")
-  .attr("transform", 'translate(${margin.left},${margin.top})');
+  .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // Import csv file
 d3.csv("assets/data/data.csv").then(function(healthData) {
@@ -107,6 +107,26 @@ chartGroup.append("text")
 .text("HealthCare (%)")
 .attr("transform", "rotate(-90)");
 
+    // Initialize tool tip
+    var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([80, -60])
+      .html(function(d) {
+        return (`${d.state}<br>Poverty: ${d.poverty}<br>Obesity: ${d.healthcare}`);
+      });
+
+    // Create tooltip in the chart
+    svg.call(toolTip);     
+    
+    // Create event listeners to display and hide the tooltip
+    circlesGroup.on("click", function(data) {
+        toolTip.show(data, this);
+      })
+        // onmouseout event
+        .on("mouseout", function(data, index) {
+          toolTip.hide(data);
+        }); 
+           
 });
 
 
